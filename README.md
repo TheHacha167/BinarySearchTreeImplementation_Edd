@@ -23,7 +23,7 @@ BinarySearchTreeImplementation/
 └── README.md
 
 ## Uso
-Para utilizar este proyecto, clone el repositorio y compile los archivos Java ubicados en el directorio `src`. Puede realizar pruebas y modificaciones según sea necesario para adaptarse a sus requisitos educativos o de proyecto.
+Para utilizar este proyecto, clone el repositorio y compile los archivos Java ubicados en el directorio `src`. Puede realizar pruebas y modificaciones según sea necesario para adaptarse a sus requisitos.
 
 ## Contribuciones
 Las contribuciones a este proyecto son bienvenidas. Por favor, envíe una solicitud de extracción para cualquier mejora o corrección.
@@ -31,5 +31,3 @@ Las contribuciones a este proyecto son bienvenidas. Por favor, envíe una solici
 ## Derechos de Autor
 © 2023 TheHacha167. Todos los derechos reservados.
 
-## Licencia
-Este proyecto está bajo una licencia que permite su uso y distribución bajo ciertas condiciones. Consulte el archivo LICENSE para más detalles.
