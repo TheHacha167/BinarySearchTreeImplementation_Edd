@@ -5,13 +5,13 @@ import java.util.ArrayList;
  * Clase que implementa un árbol binario de búsqueda.
  */
 public class BinarySearchTree {
-    private TreeNode root; // Raíz del árbol
+    private Node raiz; // Raíz del árbol
 
     /**
      * Constructor del árbol binario de búsqueda.
      */
     public BinarySearchTree() {
-        root = null;
+        raiz = null;
     }
 
     /**
@@ -19,26 +19,26 @@ public class BinarySearchTree {
      * @param i Valor a insertar.
      */
     public void insert(Integer i) {
-        root = insertRec(root, i);
+        raiz = insertRec(raiz, i);
     }
 
     /**
      * Método auxiliar recursivo para insertar un nuevo valor.
-     * @param root Nodo actual.
+     * @param raiz Nodo actual.
      * @param i Valor a insertar.
      * @return Nodo actualizado.
      */
-    private TreeNode insertRec(TreeNode root, Integer i) {
-        if (root == null) {
-            root = new TreeNode(i);
-            return root;
+    private Node insertRec(Node raiz, Integer i) {
+        if (raiz == null) {
+            raiz = new Node(i);
+            return raiz;
         }
-        if (i < root.value) {
-            root.left = insertRec(root.left, i);
-        } else if (i > root.value) {
-            root.right = insertRec(root.right, i);
+        if (i < raiz.value) {
+            raiz.izquierda = insertRec(raiz.izquierda, i);
+        } else if (i > raiz.value) {
+            raiz.derecha = insertRec(raiz.derecha, i);
         }
-        return root;
+        return raiz;
     }
 
     /**
@@ -46,48 +46,48 @@ public class BinarySearchTree {
      * @param i Valor a borrar.
      */
     public void delete(Integer i) {
-        root = deleteRec(root, i);
+        raiz = deleteRec(raiz, i);
     }
 
     /**
      * Método auxiliar recursivo para borrar un valor.
-     * @param root Nodo actual.
+     * @param raiz Nodo actual.
      * @param i Valor a borrar.
      * @return Nodo actualizado.
      */
-    private TreeNode deleteRec(TreeNode root, Integer i) {
-        if (root == null) {
-            return root;
+    private Node deleteRec(Node raiz, Integer i) {
+        if (raiz == null) {
+            return raiz;
         }
 
-        if (i < root.value) {
-            root.left = deleteRec(root.left, i);
-        } else if (i > root.value) {
-            root.right = deleteRec(root.right, i);
+        if (i < raiz.value) {
+            raiz.izquierda = deleteRec(raiz.izquierda, i);
+        } else if (i > raiz.value) {
+            raiz.derecha = deleteRec(raiz.derecha, i);
         } else {
-            if (root.left == null) {
-                return root.right;
-            } else if (root.right == null) {
-                return root.left;
+            if (raiz.izquierda == null) {
+                return raiz.derecha;
+            } else if (raiz.derecha == null) {
+                return raiz.izquierda;
             }
 
-            root.value = minValue(root.right);
-            root.right = deleteRec(root.right, root.value);
+            raiz.value = minValue(raiz.derecha);
+            raiz.derecha = deleteRec(raiz.derecha, raiz.value);
         }
 
-        return root;
+        return raiz;
     }
 
     /**
      * Encuentra el valor mínimo en el árbol.
-     * @param root Nodo de inicio.
+     * @param raiz Nodo de inicio.
      * @return Valor mínimo.
      */
-    private Integer minValue(TreeNode root) {
-        Integer minValue = root.value;
-        while (root.left != null) {
-            minValue = root.left.value;
-            root = root.left;
+    private Integer minValue(Node raiz) {
+        Integer minValue = raiz.value;
+        while (raiz.izquierda != null) {
+            minValue = raiz.izquierda.value;
+            raiz = raiz.izquierda;
         }
         return minValue;
     }
@@ -98,20 +98,20 @@ public class BinarySearchTree {
      */
     public ArrayList<Integer> inorder() {
         ArrayList<Integer> result = new ArrayList<>();
-        inorderRec(root, result);
+        inorderRec(raiz, result);
         return result;
     }
 
     /**
      * Método auxiliar recursivo para el recorrido en inorden.
-     * @param root Nodo actual.
+     * @param raiz Nodo actual.
      * @param result Lista para almacenar el recorrido.
      */
-    private void inorderRec(TreeNode root, ArrayList<Integer> result) {
-        if (root != null) {
-            inorderRec(root.left, result);
-            result.add(root.value);
-            inorderRec(root.right, result);
+    private void inorderRec(Node raiz, ArrayList<Integer> result) {
+        if (raiz != null) {
+            inorderRec(raiz.izquierda, result);
+            result.add(raiz.value);
+            inorderRec(raiz.derecha, result);
         }
     }
 
@@ -121,20 +121,20 @@ public class BinarySearchTree {
      */
     public ArrayList<Integer> preorder() {
         ArrayList<Integer> result = new ArrayList<>();
-        preorderRec(root, result);
+        preorderRec(raiz, result);
         return result;
     }
 
     /**
      * Método auxiliar recursivo para el recorrido en preorden.
-     * @param root Nodo actual.
+     * @param raiz Nodo actual.
      * @param result Lista para almacenar el recorrido.
      */
-    private void preorderRec(TreeNode root, ArrayList<Integer> result) {
-        if (root != null) {
-            result.add(root.value);
-            preorderRec(root.left, result);
-            preorderRec(root.right, result);
+    private void preorderRec(Node raiz, ArrayList<Integer> result) {
+        if (raiz != null) {
+            result.add(raiz.value);
+            preorderRec(raiz.izquierda, result);
+            preorderRec(raiz.derecha, result);
         }
     }
 
@@ -144,20 +144,20 @@ public class BinarySearchTree {
      */
     public ArrayList<Integer> postorder() {
         ArrayList<Integer> result = new ArrayList<>();
-        postorderRec(root, result);
+        postorderRec(raiz, result);
         return result;
     }
 
     /**
      * Método auxiliar recursivo para el recorrido en postorden.
-     * @param root Nodo actual.
+     * @param raiz Nodo actual.
      * @param result Lista para almacenar el recorrido.
      */
-    private void postorderRec(TreeNode root, ArrayList<Integer> result) {
-        if (root != null) {
-            postorderRec(root.left, result);
-            postorderRec(root.right, result);
-            result.add(root.value);
+    private void postorderRec(Node raiz, ArrayList<Integer> result) {
+        if (raiz != null) {
+            postorderRec(raiz.izquierda, result);
+            postorderRec(raiz.derecha, result);
+            result.add(raiz.value);
         }
     }
 }

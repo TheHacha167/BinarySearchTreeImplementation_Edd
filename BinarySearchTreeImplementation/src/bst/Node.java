@@ -3,19 +3,19 @@ package bst;
 /**
  * Clase para representar un nodo en un árbol binario de búsqueda.
  */
-public class TreeNode {
+public class Node {
     Integer value; // Valor almacenado en el nodo
-    TreeNode left; // Referencia al hijo izquierdo
-    TreeNode right; // Referencia al hijo derecho
+    Node izquierda; // Referencia al hijo izquierdo
+    Node derecha; // Referencia al hijo derecho
 
     /**
      * Constructor del nodo.
      * @param value Valor entero para el nodo.
      */
-    TreeNode(Integer value) {
+    Node(Integer value) {
         this.value = value;
-        left = null;
-        right = null;
+        izquierda = null;
+        derecha = null;
     }
 }
  
