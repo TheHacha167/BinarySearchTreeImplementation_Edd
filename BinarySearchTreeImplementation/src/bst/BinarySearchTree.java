@@ -33,9 +33,9 @@ public class BinarySearchTree {
             raiz = new Node(i);
             return raiz;
         }
-        if (i < raiz.value) {
+        if (i < raiz.Valor) {
             raiz.izquierda = insertRec(raiz.izquierda, i);
-        } else if (i > raiz.value) {
+        } else if (i > raiz.Valor) {
             raiz.derecha = insertRec(raiz.derecha, i);
         }
         return raiz;
@@ -60,9 +60,9 @@ public class BinarySearchTree {
             return raiz;
         }
 
-        if (i < raiz.value) {
+        if (i < raiz.Valor) {
             raiz.izquierda = deleteRec(raiz.izquierda, i);
-        } else if (i > raiz.value) {
+        } else if (i > raiz.Valor) {
             raiz.derecha = deleteRec(raiz.derecha, i);
         } else {
             if (raiz.izquierda == null) {
@@ -71,8 +71,8 @@ public class BinarySearchTree {
                 return raiz.izquierda;
             }
 
-            raiz.value = minValue(raiz.derecha);
-            raiz.derecha = deleteRec(raiz.derecha, raiz.value);
+            raiz.Valor = minValor(raiz.derecha);
+            raiz.derecha = deleteRec(raiz.derecha, raiz.Valor);
         }
 
         return raiz;
@@ -83,13 +83,13 @@ public class BinarySearchTree {
      * @param raiz Nodo de inicio.
      * @return Valor mínimo.
      */
-    private Integer minValue(Node raiz) {
-        Integer minValue = raiz.value;
+    private Integer minValor(Node raiz) {
+        Integer minValor = raiz.Valor;
         while (raiz.izquierda != null) {
-            minValue = raiz.izquierda.value;
+            minValor = raiz.izquierda.Valor;
             raiz = raiz.izquierda;
         }
-        return minValue;
+        return minValor;
     }
 
     /**
@@ -110,7 +110,7 @@ public class BinarySearchTree {
     private void inorderRec(Node raiz, ArrayList<Integer> result) {
         if (raiz != null) {
             inorderRec(raiz.izquierda, result);
-            result.add(raiz.value);
+            result.add(raiz.Valor);
             inorderRec(raiz.derecha, result);
         }
     }
@@ -132,7 +132,7 @@ public class BinarySearchTree {
      */
     private void preorderRec(Node raiz, ArrayList<Integer> result) {
         if (raiz != null) {
-            result.add(raiz.value);
+            result.add(raiz.Valor);
             preorderRec(raiz.izquierda, result);
             preorderRec(raiz.derecha, result);
         }
@@ -157,7 +157,7 @@ public class BinarySearchTree {
         if (raiz != null) {
             postorderRec(raiz.izquierda, result);
             postorderRec(raiz.derecha, result);
-            result.add(raiz.value);
+            result.add(raiz.Valor);
         }
     }
 }
